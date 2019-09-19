@@ -69,6 +69,32 @@
         <servlet-name>DeleteBucketItem</servlet-name>
         <url-pattern>/DeleteBucketItem</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>completeOrder</servlet-name>
+        <servlet-class>internet.shop.controller.CompeteOrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>completeOrder</servlet-name>
+        <url-pattern>/completeOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteOrder</servlet-name>
+        <servlet-class>internet.shop.controller.DeleteOrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteOrder</servlet-name>
+        <url-pattern>/deleteOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>getAllOrders</servlet-name>
+        <servlet-class>internet.shop.controller.GetAllOrdersController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getAllOrders</servlet-name>
+        <url-pattern>/getAllOrders</url-pattern>
+    </servlet-mapping>
 
     <listener>
         <listener-class>internet.shop.controller.InjectInitializer</listener-class>

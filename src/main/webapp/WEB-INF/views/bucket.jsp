@@ -31,5 +31,6 @@
         </tr>
     </c:forEach>
 </table>
+<a href="/onlineshop_war_exploded/completeOrder">COMPLETE ORDER</a>
 </body>
 </html>
