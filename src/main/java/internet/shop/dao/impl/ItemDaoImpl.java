@@ -5,6 +5,7 @@ import internet.shop.dao.Storage;
 import internet.shop.lib.Dao;
 import internet.shop.model.Item;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Dao
@@ -47,5 +48,10 @@ public class ItemDaoImpl implements ItemDao {
     public Item delete(Item item) {
         delete(item.getId());
         return item;
+    }
+
+    @Override
+    public List<Item> getAll() {
+        return Storage.items;
     }
 }

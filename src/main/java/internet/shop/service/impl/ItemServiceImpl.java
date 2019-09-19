@@ -6,6 +6,8 @@ import internet.shop.lib.Service;
 import internet.shop.model.Item;
 import internet.shop.service.ItemService;
 
+import java.util.List;
+
 @Service
 public class ItemServiceImpl implements ItemService {
     @Inject
@@ -39,5 +41,10 @@ public class ItemServiceImpl implements ItemService {
     public void delete(Item item) {
 
         itemDao.delete(item);
+    }
+
+    @Override
+    public List<Item> getAll() {
+        return itemDao.getAll();
     }
 }

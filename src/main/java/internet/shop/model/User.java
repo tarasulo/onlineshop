@@ -8,7 +8,39 @@ public class User {
     private static long idGenerator = 0;
     private final Long id;
     private String name;
+    private String surname;
+    private String login;
+    private String password;
     private List<Order> orders;
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public User() {
+        id = idGenerator++;
+        orders = new ArrayList<>();
+    }
 
     public User(String name) {
         id = idGenerator++;

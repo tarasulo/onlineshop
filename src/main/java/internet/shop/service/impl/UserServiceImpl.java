@@ -1,5 +1,6 @@
 package internet.shop.service.impl;
 
+import internet.shop.dao.Storage;
 import internet.shop.dao.UserDao;
 import internet.shop.lib.Inject;
 import internet.shop.lib.Service;
@@ -37,5 +38,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List getOrders(Long userId) {
         return userDao.get(userId).getOrders();
+    }
+
+    @Override
+    public List<User> getAll() {
+        return Storage.users;
     }
 }

@@ -39,7 +39,6 @@ public class BucketServiceImpl implements BucketService {
 
     @Override
     public void delete(Long id) {
-
         bucketDao.delete(id);
     }
 
@@ -62,5 +61,13 @@ public class BucketServiceImpl implements BucketService {
     public List<Item> getAllItems(Long bucketId) {
         Bucket bucket = bucketDao.get(bucketId);
         return bucket.getItems();
+    }
+
+    @Override
+    public Bucket deleteItem(Long bucketId, Long itemId) {
+        Bucket bucket = bucketDao.get(bucketId);
+        Item item = itemDao.get(itemId);
+        bucket.getItems().remove(item);
+        return bucketDao.update(bucket);
     }
 }
