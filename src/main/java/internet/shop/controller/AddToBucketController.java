@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class AddToBucketController extends HttpServlet {
-    private static final Long DEFAULT_ID = 0L;
+    private static final Long DEFAULT_USER_ID = 0L;
 
     @Inject
     static BucketService bucketService;
@@ -23,7 +23,7 @@ public class AddToBucketController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String itemId = req.getParameter("item_id");
-        bucketService.addItem(bucketService.get(DEFAULT_ID).getId(), Long.valueOf(itemId));
+        bucketService.addItem(bucketService.get(DEFAULT_USER_ID).getId(), Long.valueOf(itemId));
         resp.sendRedirect(req.getContextPath() + "/getAllItems");
     }
 }

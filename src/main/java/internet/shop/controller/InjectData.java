@@ -40,8 +40,6 @@ public class InjectData implements ServletContextListener {
         bucketService.add(defBucket);
         bucketService.addItem(defBucket.getId(), item1.getId());
         bucketService.addItem(defBucket.getId(), item3.getId());
-
-        //def User wants to create Order from bucket
         orderService.completeOrder(defBucket.getItems(), DEFAULT_ID);
 
     }

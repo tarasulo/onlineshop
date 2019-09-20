@@ -5,6 +5,7 @@ import internet.shop.dao.UserDao;
 import internet.shop.lib.Dao;
 import internet.shop.model.User;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Dao
@@ -38,5 +39,10 @@ public class UserDaoImpl implements UserDao {
     public void delete(Long id) {
         Storage.users
                 .removeIf(user -> user.getId().equals(id));
+    }
+
+    @Override
+    public List<User> getAll() {
+        return Storage.users;
     }
 }
