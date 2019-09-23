@@ -6,9 +6,11 @@ import internet.shop.service.UserService;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class RegistrationController extends HttpServlet {
     @Inject
@@ -28,8 +30,11 @@ public class RegistrationController extends HttpServlet {
         newUser.setName(req.getParameter("user_name"));
         newUser.setSurname(req.getParameter("user_surname"));
         newUser.setPassword(req.getParameter("psw"));
-        userService.add(newUser);
-
-        resp.sendRedirect(req.getContextPath() + "/getAllUsers");
+        User user = userService.add(newUser);
+        HttpSession session = req.getSession();
+        session.setAttribute("userId", user.getId());
+        Cookie cookie = new Cookie("Mate", user.getToken());
+        resp.addCookie(cookie);
+        resp.sendRedirect(req.getContextPath() + "/getAllItems");
     }
 }

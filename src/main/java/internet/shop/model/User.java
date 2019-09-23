@@ -11,6 +11,7 @@ public class User {
     private String surname;
     private String login;
     private String password;
+    private String token;
     private List<Order> orders;
 
     public String getSurname() {
@@ -42,9 +43,12 @@ public class User {
         orders = new ArrayList<>();
     }
 
-    public User(String name) {
+    public User(String name, String surname, String login, String password) {
         id = idGenerator++;
         this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.password = password;
         orders = new ArrayList<>();
     }
 
@@ -73,5 +77,13 @@ public class User {
         return "User{id=" + id
                 + ", name=" + name + "\n"
                 + ", orders=" + orders +  "}";
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

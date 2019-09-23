@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class DeleteBucketItemController extends HttpServlet {
 
-    private static final Long DEFAULT_ID = 0L;
-
     @Inject
     private static BucketService bucketService;
 
@@ -20,7 +18,8 @@ public class DeleteBucketItemController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String itemId = req.getParameter("item_id");
-        bucketService.deleteItem(Long.valueOf(bucketService.get(DEFAULT_ID).getId()),
+        Long userId = (Long) req.getSession(true).getAttribute("userId");
+        bucketService.deleteItem(Long.valueOf(bucketService.get(userId).getId()),
                 Long.valueOf(itemId));
         resp.sendRedirect(req.getContextPath() + "/bucket");
     }

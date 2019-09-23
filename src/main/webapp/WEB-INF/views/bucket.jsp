@@ -3,7 +3,7 @@
 <jsp:useBean id="items" scope="request" type="java.util.List<internet.shop.model.Item>"/>
 <html>
 <head>
-    <title>My Bucket</title>
+    <title>My Bucket ${user.login}</title>
 </head>
 <body>
 <table  border="1" bgcolor="#f0e68c">

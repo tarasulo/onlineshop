@@ -1,9 +1,11 @@
 package internet.shop.service;
 
+import internet.shop.exceptions.AuthenticationException;
 import internet.shop.model.Order;
 import internet.shop.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -18,4 +20,8 @@ public interface UserService {
     List<Order> getOrders(Long userId);
 
     List<User> getAll();
+
+    User login(String login, String psw) throws AuthenticationException;
+
+    Optional<User> getByToken(String token);
 }

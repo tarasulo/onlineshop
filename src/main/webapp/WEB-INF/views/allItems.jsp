@@ -1,4 +1,4 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,13 +18,13 @@
     <c:forEach var="item" items="${items}">
         <tr>
             <td>
-                <c:out value="${item.id}" />
+                <c:out value="${item.id}"/>
             </td>
             <td>
-                <c:out value="${item.name}" />
+                <c:out value="${item.name}"/>
             </td>
             <td>
-                <c:out value="${item.price}" />
+                <c:out value="${item.price}"/>
             </td>
             <td>
                 <a href="/onlineshop_war_exploded/addToBucket?item_id=${item.id}">ADD ITEM TO BUCKET</a>

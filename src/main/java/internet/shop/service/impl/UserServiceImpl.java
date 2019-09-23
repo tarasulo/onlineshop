@@ -1,12 +1,15 @@
 package internet.shop.service.impl;
 
 import internet.shop.dao.UserDao;
+import internet.shop.exceptions.AuthenticationException;
 import internet.shop.lib.Inject;
 import internet.shop.lib.Service;
 import internet.shop.model.User;
 import internet.shop.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,7 +19,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User add(User user) {
+        user.setToken(getToken());
         return userDao.add(user);
+    }
+
+    private String getToken() {
+        return UUID.randomUUID().toString();
     }
 
     @Override
@@ -42,5 +50,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAll() {
         return userDao.getAll();
+    }
+
+    @Override
+    public User login(String login, String psw) throws AuthenticationException {
+        return userDao.login(login, psw);
+    }
+
+    @Override
+    public Optional<User> getByToken(String token) {
+        return userDao.getByToken(token);
     }
 }
