@@ -35,6 +35,7 @@ public class AuthorizationFilter implements Filter {
         protectedUrls.put("/servlet/getAllUsers", ADMIN);
         protectedUrls.put("/servlet/deleteUser", ADMIN);
         protectedUrls.put("/servlet/addToBucket", USER);
+        protectedUrls.put("/servlet/addToBucket", ADMIN);
         protectedUrls.put("/servlet/DeleteBucketItem", USER);
         protectedUrls.put("/servlet/completeOrder", USER);
         protectedUrls.put("/servlet/deleteOrder", USER);
@@ -62,7 +63,7 @@ public class AuthorizationFilter implements Filter {
 
         String token = null;
         for (Cookie cookie : req.getCookies()) {
-            if (cookie.getName().equals("MATE")) {
+            if (cookie.getName().equals("Mate")) {
                 token = cookie.getValue();
                 break;
             }

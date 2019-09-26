@@ -224,3 +224,53 @@
 2019-09-26 12:46:42 INFO  AuthenticationFilter:46 - User bobby was authenticated
 2019-09-26 12:46:47 INFO  AuthenticationFilter:46 - User bobby was authenticated
 2019-09-26 12:47:04 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 14:00:06 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 14:01:04 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 14:01:08 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:01:14 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:03:16 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 14:03:28 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 14:03:40 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 14:03:46 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 14:03:49 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 14:04:02 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 14:04:39 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:04:41 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:04:43 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:04:56 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:05:00 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:05:07 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:05:11 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:05:20 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:06:07 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:06:14 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:06:27 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:07:23 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:07:52 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 14:23:38 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 14:23:49 INFO  AuthenticationFilter:51 - User was not authenticated
+2019-09-26 14:23:54 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:23:57 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:24:04 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:24:10 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:25:04 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 14:25:11 INFO  AuthenticationFilter:51 - User was not authenticated
+2019-09-26 14:25:15 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:25:17 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:26:00 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 14:26:06 INFO  AuthenticationFilter:51 - User was not authenticated
+2019-09-26 14:26:10 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:27:27 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:28:55 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 14:29:02 INFO  AuthenticationFilter:51 - User was not authenticated
+2019-09-26 14:29:06 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:29:17 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:29:32 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:29:40 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:29:49 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:30:02 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:30:12 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:31:04 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:31:04 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:31:13 INFO  AuthenticationFilter:45 - User admin was authenticated
+2019-09-26 14:31:19 INFO  AuthenticationFilter:45 - User admin was authenticated
