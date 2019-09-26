@@ -29,6 +29,6 @@ public class CompeteOrderController extends HttpServlet {
         List<Item> items = bucketService.getAllItems(bucket.getId());
         orderService.completeOrder(items, userId);
         bucketService.clear(bucketService.get(userId).getId());
-        resp.sendRedirect(req.getContextPath() + "/getAllOrders");
+        resp.sendRedirect(req.getContextPath() + "/servlet/getAllOrders");
     }
 }

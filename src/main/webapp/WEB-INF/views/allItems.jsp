@@ -7,7 +7,7 @@
 <body>
 <p>Items:</p>
 <hr>
-<a href="/onlineshop_war_exploded/bucket?user_id=${user_id}&item_id=${item.id}&bucket_id=${bucket_id}">GO TO BUCKET</a>
+<a href="/onlineshop_war_exploded/servlet/bucket?user_id=${user_id}&item_id=${item.id}&bucket_id=${bucket_id}">GO TO BUCKET</a>
 <table border="2" bgcolor="#b3e6ff">
     <tr>
         <th>ID</th>
@@ -27,11 +27,11 @@
                 <c:out value="${item.price}"/>
             </td>
             <td>
-                <a href="/onlineshop_war_exploded/addToBucket?item_id=${item.id}">ADD ITEM TO BUCKET</a>
+                <a href="/onlineshop_war_exploded/servlet/addToBucket?item_id=${item.id}">ADD ITEM TO BUCKET</a>
             </td>
         </tr>
     </c:forEach>
 </table>
-
+<a href="/onlineshop_war_exploded/logout">LOG OUT</a>
 </body>
 </html>

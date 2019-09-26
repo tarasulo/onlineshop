@@ -18,7 +18,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>getAllUsers</servlet-name>
-        <url-pattern>/getAllUsers</url-pattern>
+        <url-pattern>/servlet/getAllUsers</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>registration</servlet-name>
@@ -37,11 +37,19 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <filter>
-        <filter-name>auth-filter</filter-name>
+        <filter-name>authenticationFilter</filter-name>
         <filter-class>internet.shop.web.filters.AuthenticationFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>auth-filter</filter-name>
+        <filter-name>authenticationFilter</filter-name>
+        <url-pattern>/servlet/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>authorizationFilter</filter-name>
+        <filter-class>internet.shop.web.filters.AuthorizationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authorizationFilter</filter-name>
         <url-pattern>/servlet/*</url-pattern>
     </filter-mapping>
     <servlet>
@@ -50,7 +58,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>getAllItems</servlet-name>
-        <url-pattern>/getAllItems</url-pattern>
+        <url-pattern>/servlet/getAllItems</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>deleteUser</servlet-name>
@@ -58,7 +66,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>deleteUser</servlet-name>
-        <url-pattern>/deleteUser</url-pattern>
+        <url-pattern>/servlet/deleteUser</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -67,7 +75,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>getBucket</servlet-name>
-        <url-pattern>/bucket</url-pattern>
+        <url-pattern>/servlet/bucket</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>addToBucket</servlet-name>
@@ -75,7 +83,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>addToBucket</servlet-name>
-        <url-pattern>/addToBucket</url-pattern>
+        <url-pattern>/servlet/addToBucket</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>DeleteBucketItem</servlet-name>
@@ -83,7 +91,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>DeleteBucketItem</servlet-name>
-        <url-pattern>/DeleteBucketItem</url-pattern>
+        <url-pattern>/servlet/DeleteBucketItem</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>completeOrder</servlet-name>
@@ -91,7 +99,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>completeOrder</servlet-name>
-        <url-pattern>/completeOrder</url-pattern>
+        <url-pattern>/servlet/completeOrder</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -100,7 +108,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>deleteOrder</servlet-name>
-        <url-pattern>/deleteOrder</url-pattern>
+        <url-pattern>/servlet/deleteOrder</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -109,13 +117,26 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>getAllOrders</servlet-name>
-        <url-pattern>/getAllOrders</url-pattern>
+        <url-pattern>/servlet/getAllOrders</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>inject</servlet-name>
+        <servlet-class>internet.shop.controller.InjectData</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>inject</servlet-name>
+        <url-pattern>/inject</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>internet.shop.controller.LogoutController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
     <listener>
         <listener-class>internet.shop.controller.InjectInitializer</listener-class>
-    </listener>
-    <listener>
-        <listener-class>internet.shop.controller.InjectData</listener-class>
     </listener>
 </web-app>

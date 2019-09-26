@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Online Store</title>
+    <title>Title</title>
 </head>
 <body>
-    Hello world!
-    <a href="/onlineshop_war_exploded/inject">Start</a>
+<a href="/onlineshop_war_exploded/servlet/getAllItems">SHOW GOODS</a>
 </body>
 </html>

@@ -1,3 +1,226 @@
 2019-09-20 10:49:18 INFO  InjectInitializer:14 - Dependency injection started...
 2019-09-24 01:24:02 INFO  InjectInitializer:15 - Dependency injection started...
 2019-09-24 01:25:42 INFO  AuthenticationFilter:46 - User taras was authenticated
+2019-09-24 15:13:24 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-24 15:14:38 INFO  AuthenticationFilter:46 - User Miki was authenticated
+2019-09-24 15:16:01 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:39 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:16:58 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:15 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:17:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-24 15:18:01 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-24 15:18:58 INFO  AuthenticationFilter:46 - User Miki was authenticated
+2019-09-26 09:41:21 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 09:42:38 INFO  AuthenticationFilter:46 - User Miki was authenticated
+2019-09-26 10:10:50 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 10:11:27 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 10:12:08 INFO  AuthenticationFilter:46 - User tar was authenticated
+2019-09-26 10:17:40 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 10:18:08 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 10:19:04 INFO  AuthenticationFilter:46 - User tar was authenticated
+2019-09-26 10:19:06 INFO  AuthenticationFilter:46 - User tar was authenticated
+2019-09-26 10:19:11 INFO  AuthenticationFilter:46 - User tar was authenticated
+2019-09-26 10:33:59 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 10:34:10 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 10:34:35 INFO  AuthenticationFilter:46 - User ret was authenticated
+2019-09-26 10:35:59 INFO  AuthenticationFilter:46 - User ret was authenticated
+2019-09-26 10:36:07 INFO  AuthenticationFilter:46 - User ret was authenticated
+2019-09-26 10:36:34 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:36:39 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:37:16 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:37:32 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:37:45 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:37:53 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:38:21 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:38:34 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:38:37 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:38:37 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:38:39 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:38:39 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:38:40 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:38:46 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:39:03 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:39:57 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:40:59 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 10:41:14 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 10:41:32 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 10:42:09 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 10:43:59 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:24:40 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 11:25:00 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 11:25:46 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 11:25:52 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:26:10 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:27:21 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:27:27 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:28:15 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 11:28:27 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 11:28:32 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:29:08 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:31:39 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:31:48 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:45:06 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 11:45:21 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 11:45:26 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:47:23 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:47:45 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:47:55 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:48:26 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:49:01 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:49:24 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:52:34 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:52:53 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 11:53:00 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 11:53:28 INFO  AuthenticationFilter:46 - User qwe was authenticated
+2019-09-26 11:53:38 INFO  AuthenticationFilter:46 - User qwe was authenticated
+2019-09-26 11:53:44 INFO  AuthenticationFilter:46 - User qwe was authenticated
+2019-09-26 11:53:47 INFO  AuthenticationFilter:46 - User qwe was authenticated
+2019-09-26 11:53:53 INFO  AuthenticationFilter:46 - User qwe was authenticated
+2019-09-26 11:53:58 INFO  AuthenticationFilter:46 - User qwe was authenticated
+2019-09-26 11:54:03 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:54:04 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:54:09 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:54:10 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:54:20 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:54:41 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:54:44 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:54:53 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:55:14 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 11:55:38 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 11:55:41 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 11:55:47 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:11:15 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 12:11:26 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 12:11:31 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:11:33 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:11:35 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:11:39 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:11:47 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:23:07 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 12:23:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 12:23:34 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 12:23:44 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 12:30:45 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 12:32:09 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 12:34:08 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 12:34:17 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 12:34:21 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:34:31 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:34:49 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:34:51 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:34:56 INFO  AuthenticationFilter:46 - User tar was authenticated
+2019-09-26 12:34:57 INFO  AuthenticationFilter:46 - User tar was authenticated
+2019-09-26 12:35:00 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:35:03 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:35:10 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:35:11 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:44:23 INFO  InjectInitializer:15 - Dependency injection started...
+2019-09-26 12:44:34 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 12:44:38 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:44:41 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:44:53 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:45:00 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:45:01 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:46:05 INFO  AuthenticationFilter:46 - User admin was authenticated
+2019-09-26 12:46:26 INFO  AuthenticationFilter:52 - User was not authenticated
+2019-09-26 12:46:36 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 12:46:42 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 12:46:47 INFO  AuthenticationFilter:46 - User bobby was authenticated
+2019-09-26 12:47:04 INFO  AuthenticationFilter:46 - User bobby was authenticated
