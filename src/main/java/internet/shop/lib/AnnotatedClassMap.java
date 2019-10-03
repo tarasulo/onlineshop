@@ -1,10 +1,7 @@
 package internet.shop.lib;
 
 import internet.shop.Factory;
-import internet.shop.dao.BucketDao;
-import internet.shop.dao.ItemDao;
-import internet.shop.dao.OrderDao;
-import internet.shop.dao.UserDao;
+import internet.shop.dao.*;
 import internet.shop.service.BucketService;
 import internet.shop.service.ItemService;
 import internet.shop.service.OrderService;
@@ -21,6 +18,7 @@ public class AnnotatedClassMap {
         classMap.put(ItemDao.class, Factory.getItemDao());
         classMap.put(OrderDao.class, Factory.getOrderDao());
         classMap.put(UserDao.class, Factory.getUserDao());
+        classMap.put(RoleDao.class, Factory.getRoleDao());
         classMap.put(BucketService.class, Factory.getBucketService());
         classMap.put(ItemService.class, Factory.getItemService());
         classMap.put(OrderService.class, Factory.getOrderService());
