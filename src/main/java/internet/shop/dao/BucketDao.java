@@ -11,4 +11,6 @@ public interface BucketDao {
     Bucket update(Bucket bucket);
 
     Bucket delete(Long id);
+
+    Bucket getBucketByUserId(Long id);
 }

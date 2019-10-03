@@ -30,6 +30,10 @@ public class Role {
         return new Role(RoleName.valueOf(roleName));
     }
 
+    public void setId(Long roleId) {
+        this.id = roleId;
+    }
+
     public enum RoleName {
         USER, ADMIN;
     }

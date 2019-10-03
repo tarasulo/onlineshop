@@ -3,6 +3,7 @@ package internet.shop.dao.jdbc;
 import internet.shop.dao.ItemDao;
 import internet.shop.lib.Dao;
 import internet.shop.model.Item;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.log4j.Logger;
 
 @Dao
@@ -17,7 +19,6 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
     private static final Logger logger = Logger.getLogger(ItemDaoJdbcImpl.class);
     private static final String DB_NAME = "store";
     private Statement statement = null;
-
 
     public ItemDaoJdbcImpl(Connection connection) {
         super(connection);
