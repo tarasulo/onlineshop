@@ -2,11 +2,10 @@ package internet.shop.controller;
 
 import internet.shop.exceptions.AuthenticationException;
 import internet.shop.lib.Inject;
-import internet.shop.model.Bucket;
 import internet.shop.model.User;
-import internet.shop.service.BucketService;
 import internet.shop.service.UserService;
 
+import internet.shop.util.HashUtil;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -14,13 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 public class LoginController extends HttpServlet {
+
+    private static Logger logger = Logger.getLogger(LoginController.class);
     @Inject
     private static UserService userService;
-
-    @Inject
-    private static BucketService bucketService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -34,11 +33,13 @@ public class LoginController extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("psw");
         try {
-            User user = userService.login(login, password);
-            HttpSession session = req.getSession();
+            String salt = userService.getSaltByLogin(login);
+            String hashedPassword = HashUtil.hashPassword(password, salt.getBytes());
+            User user = userService.login(login, hashedPassword);
+
+            HttpSession session = req.getSession(true);
             session.setAttribute("userId", user.getId());
             Cookie cookie = new Cookie("Mate", user.getToken());
-            Bucket bucket = bucketService.add(new Bucket(user.getId()));
             resp.addCookie(cookie);
             resp.sendRedirect(req.getContextPath() + "/servlet/getAllItems");
         } catch (AuthenticationException e) {

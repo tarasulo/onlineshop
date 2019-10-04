@@ -1,7 +1,11 @@
 package internet.shop.lib;
 
 import internet.shop.Factory;
-import internet.shop.dao.*;
+import internet.shop.dao.BucketDao;
+import internet.shop.dao.ItemDao;
+import internet.shop.dao.OrderDao;
+import internet.shop.dao.RoleDao;
+import internet.shop.dao.UserDao;
 import internet.shop.service.BucketService;
 import internet.shop.service.ItemService;
 import internet.shop.service.OrderService;

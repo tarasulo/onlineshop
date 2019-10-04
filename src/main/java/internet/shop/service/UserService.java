@@ -24,4 +24,6 @@ public interface UserService {
     User login(String login, String psw) throws AuthenticationException;
 
     Optional<User> getByToken(String token);
+
+    String getSaltByLogin(String login);
 }

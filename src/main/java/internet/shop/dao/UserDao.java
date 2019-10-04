@@ -21,4 +21,6 @@ public interface UserDao {
     User login(String login, String psw) throws AuthenticationException;
 
     Optional<User> getByToken(String token);
+
+    String getSaltByLogin(String login);
 }

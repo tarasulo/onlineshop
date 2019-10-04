@@ -24,13 +24,13 @@ CREATE TABLE `store`.`orders_items` (
   CONSTRAINT `orders_items_orders_fk`
     FOREIGN KEY (`order_id`)
     REFERENCES `store`.`orders` (`order_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `orders_items_items_fk`
     FOREIGN KEY (`item_id`)
     REFERENCES `store`.`items` (`item_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 CREATE TABLE `store`.`users` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
@@ -49,8 +49,8 @@ ALTER TABLE `store`.`orders`
 ADD CONSTRAINT `orders_users_fk`
   FOREIGN KEY (`user_id`)
   REFERENCES `store`.`users` (`user_id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 INSERT INTO store.users (name, surname, login, password)
 VALUES ('Bob', 'Marley', 'bobby', 'admin123');
@@ -73,4 +73,65 @@ INSERT INTO store.orders_items (order_id, item_id) VALUES ('2', '6');
 INSERT INTO store.orders_items (order_id, item_id) VALUES ('3', '8');
 INSERT INTO store.orders_items (order_id, item_id) VALUES ('3', '5');
 
+ALTER TABLE `store`.`users`
+ADD COLUMN `salt` VARCHAR(255) NOT NULL;
 
+CREATE TABLE `store`.`role` (
+  `role_id` INT NOT NULL AUTO_INCREMENT,
+  `role_name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`role_id`));
+CREATE TABLE `store`.`user_role` (
+  `user_role_id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `role_id` INT NOT NULL,
+  PRIMARY KEY (`user_role_id`),
+  INDEX `user_role.user_id_fk_idx` (`user_id` ASC) VISIBLE,
+  INDEX `user_role.role_id_fk_idx` (`role_id` ASC) VISIBLE,
+  CONSTRAINT `user_role.user_id_fk`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `users` (`user_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `user_role.role_id_fk`
+    FOREIGN KEY (`role_id`)
+    REFERENCES `role` (`role_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+INSERT INTO `store`.`role` (`role_name`) VALUES ('ADMIN');
+INSERT INTO `store`.`role` (`role_name`) VALUES ('USER');
+
+INSERT INTO `store`.`user_role` (`user_id`, `role_id`) VALUES ('1', '1');
+INSERT INTO `store`.`user_role` (`user_id`, `role_id`) VALUES ('2', '2');
+
+CREATE TABLE `store`.`buckets` (
+  `bucket_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`bucket_id`),
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
+  KEY `user_id_fk_idx` (`user_id`),
+  CONSTRAINT `user_id_fk`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`user_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+)
+
+CREATE TABLE `store`.`buckets_items` (
+  `buckets_items_id` int(11) NOT NULL AUTO_INCREMENT,
+  `bucket_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  PRIMARY KEY (`buckets_items_id`),
+  KEY `bucket_id_fk_idx` (`bucket_id`),
+  KEY `item_id_fk_idx` (`item_id`),
+  CONSTRAINT `bucket_id_fk`
+  FOREIGN KEY (`bucket_id`)
+  REFERENCES `buckets` (`bucket_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  CONSTRAINT `item_id_fk`
+  FOREIGN KEY (`item_id`)
+   REFERENCES `items` (`item_id`)
+   ON DELETE CASCADE
+   ON UPDATE CASCADE
+)

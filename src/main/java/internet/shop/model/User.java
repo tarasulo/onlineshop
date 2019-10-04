@@ -7,16 +7,16 @@ import java.util.Set;
 
 public class User {
 
-    private static long idGenerator = 0;
     private Long id;
     private String name;
     private String surname;
     private String login;
     private String password;
+    private String salt;
     private String token;
     private List<Order> orders;
-    private Set<Role> roles = new HashSet<>();
     private Bucket bucket;
+    private Set<Role> roles = new HashSet<>();
 
     public Set<Role> getRoles() {
         return roles;
@@ -55,12 +55,10 @@ public class User {
     }
 
     public User() {
-        id = idGenerator++;
         orders = new ArrayList<>();
     }
 
     public User(String name, String surname, String login, String password) {
-        id = idGenerator++;
         this.name = name;
         this.surname = surname;
         this.login = login;
@@ -110,4 +108,13 @@ public class User {
     public void setBucket(Bucket bucket) {
         this.bucket = bucket;
     }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
 }
