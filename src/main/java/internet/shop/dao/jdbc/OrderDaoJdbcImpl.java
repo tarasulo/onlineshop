@@ -1,10 +1,9 @@
 package internet.shop.dao.jdbc;
 
 import internet.shop.dao.OrderDao;
+import internet.shop.lib.Dao;
 import internet.shop.model.Item;
 import internet.shop.model.Order;
-import internet.shop.model.User;
-import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,9 +11,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 
+@Dao
 public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
     private static final Logger logger = Logger.getLogger(OrderDaoJdbcImpl.class);
+
     public OrderDaoJdbcImpl(Connection connection) {
         super(connection);
     }

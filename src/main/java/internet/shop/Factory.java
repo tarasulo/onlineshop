@@ -3,11 +3,13 @@ package internet.shop;
 import internet.shop.dao.BucketDao;
 import internet.shop.dao.ItemDao;
 import internet.shop.dao.OrderDao;
+import internet.shop.dao.RoleDao;
 import internet.shop.dao.UserDao;
-import internet.shop.dao.impl.BucketDaoImpl;
-import internet.shop.dao.impl.OrderDaoImpl;
-import internet.shop.dao.impl.UserDaoImpl;
+import internet.shop.dao.jdbc.BucketDaoJdbcImpl;
 import internet.shop.dao.jdbc.ItemDaoJdbcImpl;
+import internet.shop.dao.jdbc.OrderDaoJdbcImpl;
+import internet.shop.dao.jdbc.RoleDaoJdbcImpl;
+import internet.shop.dao.jdbc.UserDaoJdbcImpl;
 import internet.shop.service.BucketService;
 import internet.shop.service.ItemService;
 import internet.shop.service.OrderService;
@@ -22,8 +24,8 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import org.apache.log4j.Logger;
 import java.util.Properties;
+import org.apache.log4j.Logger;
 
 public class Factory {
 
@@ -32,10 +34,11 @@ public class Factory {
 
     static {
         try {
-            InputStream input = Factory.class.getClassLoader().getResourceAsStream("config.properties");
+            InputStream input = Factory.class.getClassLoader()
+                    .getResourceAsStream("config.properties");
             Properties prop = new Properties();
             prop.load(input);
-            Class.forName(prop.getProperty("jdbc.driver"));
+            Class.forName(prop.getProperty("jdbc.driver").toString());
             connection =
                     DriverManager.getConnection(prop.getProperty("db.url")
                             + prop.getProperty("credentials"));
@@ -48,11 +51,19 @@ public class Factory {
     private static BucketDao bucketDao;
     private static OrderDao orderDao;
     private static UserDao userDao;
+    private static RoleDao roleDao;
 
     private static ItemService itemService;
     private static BucketService bucketService;
     private static OrderService orderService;
     private static UserService userService;
+
+    public static RoleDao getRoleDao() {
+        if (roleDao == null) {
+            roleDao = new RoleDaoJdbcImpl(connection);
+        }
+        return roleDao;
+    }
 
     public static ItemDao getItemDao() {
         if (itemDao == null) {
@@ -63,21 +74,21 @@ public class Factory {
 
     public static BucketDao getBucketDao() {
         if (bucketDao == null) {
-            bucketDao = new BucketDaoImpl();
+            bucketDao = new BucketDaoJdbcImpl(connection);
         }
         return bucketDao;
     }
 
     public static OrderDao getOrderDao() {
         if (orderDao == null) {
-            orderDao = new OrderDaoImpl();
+            orderDao = new OrderDaoJdbcImpl(connection);
         }
         return orderDao;
     }
 
     public static UserDao getUserDao() {
         if (userDao == null) {
-            userDao = new UserDaoImpl();
+            userDao = new UserDaoJdbcImpl(connection);
         }
         return userDao;
     }

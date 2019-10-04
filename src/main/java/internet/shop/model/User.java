@@ -8,7 +8,7 @@ import java.util.Set;
 public class User {
 
     private static long idGenerator = 0;
-    private final Long id;
+    private Long id;
     private String name;
     private String surname;
     private String login;
@@ -16,6 +16,7 @@ public class User {
     private String token;
     private List<Order> orders;
     private Set<Role> roles = new HashSet<>();
+    private Bucket bucket;
 
     public Set<Role> getRoles() {
         return roles;
@@ -100,5 +101,13 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setBucket(Bucket bucket) {
+        this.bucket = bucket;
     }
 }
