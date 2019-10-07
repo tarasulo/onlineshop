@@ -1,5 +1,7 @@
 package internet.shop.controller;
 
+import static internet.shop.util.HashUtil.getSalt;
+
 import internet.shop.lib.Inject;
 import internet.shop.model.Role;
 import internet.shop.model.User;
@@ -40,7 +42,7 @@ public class RegistrationController extends HttpServlet {
         byte[] salt = HashUtil.getSalt();
         String hashedPassword = HashUtil.hashPassword(password, salt);
         newUser.setPassword(hashedPassword);
-        newUser.setSalt(new String(salt));
+        newUser.setSalt(getSalt());
         newUser.setToken(UUID.randomUUID().toString());
         newUser.addRole(Role.of("USER"));
         newUser = userService.add(newUser);

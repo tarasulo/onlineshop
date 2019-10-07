@@ -12,7 +12,7 @@ public class User {
     private String surname;
     private String login;
     private String password;
-    private String salt;
+    private byte[] salt;
     private String token;
     private List<Order> orders;
     private Bucket bucket;
@@ -109,11 +109,11 @@ public class User {
         this.bucket = bucket;
     }
 
-    public String getSalt() {
+    public byte[] getSalt() {
         return salt;
     }
 
-    public void setSalt(String salt) {
+    public void setSalt(byte[] salt) {
         this.salt = salt;
     }
 

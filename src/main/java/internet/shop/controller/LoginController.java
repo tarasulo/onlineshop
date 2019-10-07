@@ -5,7 +5,6 @@ import internet.shop.lib.Inject;
 import internet.shop.model.User;
 import internet.shop.service.UserService;
 
-import internet.shop.util.HashUtil;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -33,14 +32,11 @@ public class LoginController extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("psw");
         try {
-            String salt = userService.getSaltByLogin(login);
-            String hashedPassword = HashUtil.hashPassword(password, salt.getBytes());
-            User user = userService.login(login, hashedPassword);
-
+            User user = userService.login(login, password);
+            Cookie cookie = new Cookie("Mate", user.getToken());
             HttpSession session = req.getSession(true);
             session.setAttribute("userId", user.getId());
-            Cookie cookie = new Cookie("Mate", user.getToken());
-            resp.addCookie(cookie);
+
             resp.sendRedirect(req.getContextPath() + "/servlet/getAllItems");
         } catch (AuthenticationException e) {
             req.setAttribute("errorMsg", "Incorrect login or password!");
