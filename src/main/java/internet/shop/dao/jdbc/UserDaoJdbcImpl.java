@@ -34,14 +34,15 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public User add(User user) {
-        String query = "INSERT INTO users (name, login, password, token) "
-                + "VALUES (?, ?, ?, ?);";
+        String query = "INSERT INTO users (name, login, password, token, salt) "
+                + "VALUES (?, ?, ?, ?, ?);";
         try (PreparedStatement statementUsers = connection.prepareStatement(
                 query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             statementUsers.setString(1, user.getName());
             statementUsers.setString(2, user.getLogin());
             statementUsers.setString(3, user.getPassword());
             statementUsers.setString(4, user.getToken());
+            statementUsers.setString(5, user.getToken());
             statementUsers.executeUpdate();
             ResultSet generatedKeys = statementUsers.getGeneratedKeys();
             generatedKeys.next();
@@ -154,6 +155,22 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
         return optionalUser;
     }
 
+    @Override
+    public String getSaltByLogin(String login) {
+        String query = "SELECT salt FROM users WHERE login = ?;";
+        String result = "";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, login);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                result = resultSet.getString("salt");
+            }
+        } catch (SQLException e) {
+            logger.error("Getting salt by login error", e);
+        }
+        return result;
+    }
+
     private static User resultSetUser(ResultSet resultSet) throws SQLException {
         User user = new User();
         user.setId(resultSet.getLong("user_id"));
@@ -161,6 +178,7 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
         user.setSurname(resultSet.getString("surname"));
         user.setLogin(resultSet.getString("login"));
         user.setToken(resultSet.getString("token"));
+        user.setToken(resultSet.getString("salt"));
         return user;
     }
 }

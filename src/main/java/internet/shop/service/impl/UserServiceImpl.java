@@ -1,5 +1,7 @@
 package internet.shop.service.impl;
 
+import static internet.shop.util.HashUtil.getSalt;
+
 import internet.shop.dao.UserDao;
 import internet.shop.exceptions.AuthenticationException;
 import internet.shop.lib.Inject;
@@ -20,6 +22,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User add(User user) {
         user.setToken(getToken());
+        user.setSalt(getSalt());
         return userDao.add(user);
     }
 
@@ -60,5 +63,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> getByToken(String token) {
         return userDao.getByToken(token);
+    }
+
+    @Override
+    public String getSaltByLogin(String login) {
+        return userDao.getSaltByLogin(login);
     }
 }
