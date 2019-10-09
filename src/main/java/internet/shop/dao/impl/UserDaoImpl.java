@@ -69,7 +69,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public String getSaltByLogin(String login) {
-        return "";
+    public byte[] getSaltByLogin(String login) {
+        return null;
     }
 }

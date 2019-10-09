@@ -1,11 +1,11 @@
 package internet.shop.service.impl;
 
-import static internet.shop.util.HashUtil.getSalt;
-
+import internet.shop.dao.RoleDao;
 import internet.shop.dao.UserDao;
 import internet.shop.exceptions.AuthenticationException;
 import internet.shop.lib.Inject;
 import internet.shop.lib.Service;
+import internet.shop.model.Role;
 import internet.shop.model.User;
 import internet.shop.service.UserService;
 
@@ -19,10 +19,13 @@ public class UserServiceImpl implements UserService {
     @Inject
     private static UserDao userDao;
 
+    @Inject
+    private static RoleDao roleDao;
+
     @Override
     public User add(User user) {
         user.setToken(getToken());
-        user.setSalt(getSalt());
+        user.addRole(roleDao.get(Role.RoleName.USER));
         return userDao.add(user);
     }
 
@@ -66,7 +69,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String getSaltByLogin(String login) {
+    public byte[] getSaltByLogin(String login) {
         return userDao.getSaltByLogin(login);
     }
 }

@@ -1,16 +1,27 @@
 package internet.shop.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "role")
 public class Role {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_name", columnDefinition = "VARCHAR")
     private RoleName roleName;
+    @Column(name = "role_id", columnDefinition = "INT")
     private Long id;
-    private static long idGenerator = 0;
 
     public Role() {
-        id = idGenerator++;
     }
 
     public Role(RoleName roleName) {
-        this();
         this.roleName = roleName;
     }
 

@@ -10,11 +10,12 @@ import internet.shop.service.BucketService;
 import internet.shop.service.ItemService;
 import internet.shop.service.OrderService;
 import internet.shop.service.UserService;
-
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.log4j.Logger;
 
 public class AnnotatedClassMap {
+    private static final Logger logger = Logger.getLogger(AnnotatedClassMap.class);
     private static final Map<Class, Object> classMap = new HashMap<>();
 
     static {
@@ -27,6 +28,7 @@ public class AnnotatedClassMap {
         classMap.put(ItemService.class, Factory.getItemService());
         classMap.put(OrderService.class, Factory.getOrderService());
         classMap.put(UserService.class, Factory.getUserService());
+        logger.info("Data successfully added");
     }
 
     public static Object getImplementation(Class interfaceClass) {

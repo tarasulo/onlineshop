@@ -33,10 +33,10 @@ public class LoginController extends HttpServlet {
         String password = req.getParameter("psw");
         try {
             User user = userService.login(login, password);
-            Cookie cookie = new Cookie("Mate", user.getToken());
             HttpSession session = req.getSession(true);
             session.setAttribute("userId", user.getId());
-
+            Cookie cookie = new Cookie("Mate", user.getToken());
+            resp.addCookie(cookie);
             resp.sendRedirect(req.getContextPath() + "/servlet/getAllItems");
         } catch (AuthenticationException e) {
             req.setAttribute("errorMsg", "Incorrect login or password!");

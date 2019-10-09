@@ -4,18 +4,41 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", columnDefinition = "INT")
     private Long id;
     private String name;
     private String surname;
+    @Column(name = "login")
     private String login;
     private String password;
+    @Column(name = "salt", columnDefinition = "BLOB")
     private byte[] salt;
     private String token;
+    @Transient
     private List<Order> orders;
+    @Transient
     private Bucket bucket;
+    @ManyToMany
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
     public Set<Role> getRoles() {
@@ -89,8 +112,8 @@ public class User {
     @Override
     public String toString() {
         return "User{id=" + id
-                + ", name=" + name + "\n"
-                + ", orders=" + orders +  "}";
+                + ", name=" + name
+                + ", orders=" + orders + "}";
     }
 
     public String getToken() {

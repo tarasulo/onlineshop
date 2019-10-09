@@ -5,8 +5,8 @@ import internet.shop.dao.ItemDao;
 import internet.shop.dao.OrderDao;
 import internet.shop.dao.RoleDao;
 import internet.shop.dao.UserDao;
+import internet.shop.dao.hibernate.ItemDaoHibernateImpl;
 import internet.shop.dao.jdbc.BucketDaoJdbcImpl;
-import internet.shop.dao.jdbc.ItemDaoJdbcImpl;
 import internet.shop.dao.jdbc.OrderDaoJdbcImpl;
 import internet.shop.dao.jdbc.RoleDaoJdbcImpl;
 import internet.shop.dao.jdbc.UserDaoJdbcImpl;
@@ -67,7 +67,7 @@ public class Factory {
 
     public static ItemDao getItemDao() {
         if (itemDao == null) {
-            itemDao = new ItemDaoJdbcImpl(connection);
+            itemDao = new ItemDaoHibernateImpl();
         }
         return itemDao;
     }

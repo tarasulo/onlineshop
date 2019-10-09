@@ -10,13 +10,13 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 public class Injector {
-    private static final String PROJECT_MAIN_PACAKGE = "internet.shop";
+    private static final String PROJECT_MAIN_PACKAGE = "internet.shop";
     private static List<Class> classes = new ArrayList<>();
     private static final Logger logger = Logger.getLogger(Injector.class);
 
     static {
         try {
-            classes.addAll(getClasses(PROJECT_MAIN_PACAKGE));
+            classes.addAll(getClasses(PROJECT_MAIN_PACKAGE));
         } catch (ClassNotFoundException | IOException e) {
             logger.error("Inject has failed" + e);
         }

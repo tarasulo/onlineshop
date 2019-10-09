@@ -20,7 +20,7 @@ public class RoleDaoJdbcImpl extends AbstractDao<Role> implements RoleDao {
 
     @Override
     public Role get(Role.RoleName roleName) {
-        String getRoleQuery = "SELECT * FROM roles WHERE name=?";
+        String getRoleQuery = "SELECT * FROM store.role WHERE role_name =?";
         try (PreparedStatement statement =
                      connection.prepareStatement(getRoleQuery)) {
             statement.setString(1, String.valueOf(roleName));
@@ -28,7 +28,7 @@ public class RoleDaoJdbcImpl extends AbstractDao<Role> implements RoleDao {
             while (resultSet.next()) {
 
                 Long roleId = resultSet.getLong("role_id");
-                String roleNameDb = resultSet.getString("name");
+                String roleNameDb = resultSet.getString("role_name");
                 Role role = Role.of(roleNameDb);
                 role.setId(roleId);
                 return role;

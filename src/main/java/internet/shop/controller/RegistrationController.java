@@ -1,9 +1,6 @@
 package internet.shop.controller;
 
-import static internet.shop.util.HashUtil.getSalt;
-
 import internet.shop.lib.Inject;
-import internet.shop.model.Role;
 import internet.shop.model.User;
 import internet.shop.service.UserService;
 import internet.shop.util.HashUtil;
@@ -42,11 +39,11 @@ public class RegistrationController extends HttpServlet {
         byte[] salt = HashUtil.getSalt();
         String hashedPassword = HashUtil.hashPassword(password, salt);
         newUser.setPassword(hashedPassword);
-        newUser.setSalt(getSalt());
+        newUser.setSalt(salt);
         newUser.setToken(UUID.randomUUID().toString());
-        newUser.addRole(Role.of("USER"));
+        //newUser.addRole(Role.of("USER"));
         newUser = userService.add(newUser);
-        Cookie cookie = new Cookie("MATE", newUser.getToken());
+        Cookie cookie = new Cookie("Mate", newUser.getToken());
         resp.addCookie(cookie);
         HttpSession session = req.getSession(true);
         session.setAttribute("loggedInUser", newUser);
