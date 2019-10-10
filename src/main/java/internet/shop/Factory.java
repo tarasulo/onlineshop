@@ -6,10 +6,10 @@ import internet.shop.dao.OrderDao;
 import internet.shop.dao.RoleDao;
 import internet.shop.dao.UserDao;
 import internet.shop.dao.hibernate.ItemDaoHibernateImpl;
+import internet.shop.dao.hibernate.RoleDaoHibernateImpl;
+import internet.shop.dao.hibernate.UserDaoHibernateImpl;
 import internet.shop.dao.jdbc.BucketDaoJdbcImpl;
 import internet.shop.dao.jdbc.OrderDaoJdbcImpl;
-import internet.shop.dao.jdbc.RoleDaoJdbcImpl;
-import internet.shop.dao.jdbc.UserDaoJdbcImpl;
 import internet.shop.service.BucketService;
 import internet.shop.service.ItemService;
 import internet.shop.service.OrderService;
@@ -60,7 +60,7 @@ public class Factory {
 
     public static RoleDao getRoleDao() {
         if (roleDao == null) {
-            roleDao = new RoleDaoJdbcImpl(connection);
+            roleDao = new RoleDaoHibernateImpl();
         }
         return roleDao;
     }
@@ -88,7 +88,7 @@ public class Factory {
 
     public static UserDao getUserDao() {
         if (userDao == null) {
-            userDao = new UserDaoJdbcImpl(connection);
+            userDao = new UserDaoHibernateImpl();
         }
         return userDao;
     }

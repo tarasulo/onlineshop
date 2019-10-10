@@ -14,5 +14,7 @@
         <mapping class="internet.shop.model.Item" />
         <mapping class="internet.shop.model.Role" />
         <mapping class="internet.shop.model.User" />
+        <mapping class="internet.shop.model.Bucket" />
+        <mapping class="internet.shop.model.Order" />
     </session-factory>
 </hibernate-configuration>

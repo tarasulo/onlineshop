@@ -11,6 +11,7 @@ import internet.shop.service.OrderService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getAllOrdersForUser(Long userId) {
         return Storage.orders.stream()
-                .filter(o -> o.getUserId().equals(userId))
+                .filter(o -> Objects.equals(o.getUserId(), userId))
                 .collect(Collectors.toList());
     }
 }

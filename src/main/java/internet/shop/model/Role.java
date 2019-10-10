@@ -2,6 +2,8 @@ package internet.shop.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,10 +13,11 @@ import javax.persistence.Table;
 @Table(name = "role")
 public class Role {
 
+    @Column(name = "role_name", columnDefinition = "VARCHAR")
+    @Enumerated(EnumType.STRING)
+    private RoleName roleName;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_name", columnDefinition = "VARCHAR")
-    private RoleName roleName;
     @Column(name = "role_id", columnDefinition = "INT")
     private Long id;
 
