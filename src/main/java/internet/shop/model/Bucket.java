@@ -14,7 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "buckets")
@@ -24,16 +23,13 @@ public class Bucket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bucket_id", columnDefinition = "INT")
     private Long id;
-    @Transient
-    private Long userId;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "buckets_items",
             joinColumns = @JoinColumn(name = "bucket_id", referencedColumnName = "bucket_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName = "item_id"))
     private List<Item> items;
 
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "bucket")
     private User user;
 
     public Bucket() {}
@@ -50,7 +46,6 @@ public class Bucket {
     }
 
     public Bucket(Long userId) {
-        this.userId = userId;
         items = new ArrayList<>();
     }
 

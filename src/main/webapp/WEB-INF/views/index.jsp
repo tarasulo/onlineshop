@@ -10,6 +10,6 @@
     <a href="${pageContext.request.contextPath}/servlet/getAllUsers">Users</a>
     <a href="${pageContext.request.contextPath}/servlet/getAllItems">Items</a>
     <a href="${pageContext.request.contextPath}/logout">Logout</a>
-    <a href="/onlineshop_war_exploded/inject">Start</a>
+    <a href="${pageContext.request.contextPath}/inject">Start</a>
 </body>
 </html>

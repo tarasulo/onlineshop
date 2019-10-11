@@ -25,14 +25,14 @@
                 <c:out value="${orders.items}" />
             </td>
             <td>
-                <a href="/onlineshop_war_exploded/servlet/deleteOrder?orders_id=${orders.id}">DELETE</a>
+                <a href="${pageContext.request.contextPath}/servlet/deleteOrder?orders_id=${orders.id}">DELETE</a>
             </td>
         </tr>
     </c:forEach>
 </table>
-<a href="/onlineshop_war_exploded/servlet/bucket">BUCKET</a>
+<a href="${pageContext.request.contextPath}/servlet/bucket">BUCKET</a>
 <hr>
-<a href="/onlineshop_war_exploded/servlet/getAllItems">GO TO THE GOODS</a>
-<a href="/onlineshop_war_exploded/logout">LOG OUT</a>
+<a href="${pageContext.request.contextPath}/servlet/getAllItems">GO TO THE GOODS</a>
+<a href="${pageContext.request.contextPath}/logout">LOG OUT</a>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package internet.shop.service.impl;
 
+import internet.shop.dao.BucketDao;
 import internet.shop.dao.RoleDao;
 import internet.shop.dao.UserDao;
 import internet.shop.exceptions.AuthenticationException;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Inject
     private static RoleDao roleDao;
+
+    @Inject
+    private static BucketDao bucketDao;
 
     @Override
     public User add(User user) {

@@ -33,11 +33,11 @@ Hello, ${greeting}! Welcome to the all users page!
                 <c:out value="${user.surname}" />
             </td>
             <td>
-                <a href="/onlineshop_war_exploded/servlet/deleteUser?user_id=${user.id}">DELETE</a>
+                <a href="${pageContext.request.contextPath}/servlet/deleteUser?user_id=${user.id}">DELETE</a>
             </td>
         </tr>
     </c:forEach>
 </table>
-<a href="/onlineshop_war_exploded/registration">REGISTRATE NEW USER</a>
+<a href="${pageContext.request.contextPath}/registration">REGISTRATE NEW USER</a>
 </body>
 </html>

@@ -1,14 +1,25 @@
 package internet.shop.dao.hibernate;
 
 import internet.shop.dao.BucketDao;
+import internet.shop.lib.Dao;
+import internet.shop.lib.Inject;
 import internet.shop.model.Bucket;
+import internet.shop.model.Item;
+import internet.shop.service.ItemService;
 import internet.shop.util.HibernateUtil;
+
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+@Dao
 public class BucketDaoHibernateImpl implements BucketDao {
     private static Logger logger = Logger.getLogger(BucketDaoHibernateImpl.class);
+    @Inject
+    private static ItemService itemService;
 
     @Override
     public Bucket create(Bucket bucket) {
@@ -93,6 +104,31 @@ public class BucketDaoHibernateImpl implements BucketDao {
 
     @Override
     public Bucket getBucketByUserId(Long id) {
-        return null;
+        Bucket bucket = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query query = session.createQuery("FROM Bucket WHERE user.id=:id");
+            query.setParameter("id", id);
+            bucket = (Bucket) query.uniqueResult();
+        }
+        if (bucket == null) {
+            logger.error("Can't get bucket by id!");
+            throw new RuntimeException("Can't get bucket by id!");
+        }
+        return bucket;
+    }
+
+    public Bucket addItem(Long bucketId, Long itemId) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Bucket bucket = get(bucketId);
+            List<Item> itemList = bucket.getItems();
+            Item item = itemService.get(itemId);
+            itemList.add(item);
+            update(bucket);
+            return bucket;
+        }
+    }
+
+    public List<Item> getAllItems(Long bucketId) {
+        return get(bucketId).getItems();
     }
 }

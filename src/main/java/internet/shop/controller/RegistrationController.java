@@ -1,7 +1,9 @@
 package internet.shop.controller;
 
 import internet.shop.lib.Inject;
+import internet.shop.model.Bucket;
 import internet.shop.model.User;
+import internet.shop.service.BucketService;
 import internet.shop.service.UserService;
 import internet.shop.util.HashUtil;
 
@@ -20,6 +22,8 @@ public class RegistrationController extends HttpServlet {
     private static Logger logger = Logger.getLogger(RegistrationController.class);
     @Inject
     private static UserService userService;
+    @Inject
+    private static BucketService bucketService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -34,15 +38,17 @@ public class RegistrationController extends HttpServlet {
         newUser.setLogin(req.getParameter("login"));
         newUser.setName(req.getParameter("user_name"));
         newUser.setSurname(req.getParameter("user_surname"));
-
         String password = req.getParameter("psw");
         byte[] salt = HashUtil.getSalt();
         String hashedPassword = HashUtil.hashPassword(password, salt);
         newUser.setPassword(hashedPassword);
         newUser.setSalt(salt);
         newUser.setToken(UUID.randomUUID().toString());
-        //newUser.addRole(Role.of("USER"));
+
         newUser = userService.add(newUser);
+        Bucket bucket = new Bucket();
+        bucket.setUser(newUser);
+        bucket = bucketService.add(bucket);
         Cookie cookie = new Cookie("Mate", newUser.getToken());
         resp.addCookie(cookie);
         HttpSession session = req.getSession(true);

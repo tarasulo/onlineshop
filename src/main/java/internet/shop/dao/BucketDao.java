@@ -6,7 +6,7 @@ public interface BucketDao {
 
     Bucket create(Bucket bucket);
 
-    Bucket get(Long bucketId);
+    Bucket get(Long id);
 
     Bucket update(Bucket bucket);
 

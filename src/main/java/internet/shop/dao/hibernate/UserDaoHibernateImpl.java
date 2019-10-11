@@ -19,7 +19,25 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public User add(User user) {
-        return null;
+        Long userId = null;
+        Transaction transaction = null;
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            userId = (Long) session.save(user);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        user.setId(userId);
+        return user;
     }
 
     @Override

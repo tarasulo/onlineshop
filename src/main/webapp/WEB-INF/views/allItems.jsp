@@ -3,11 +3,31 @@
 <html>
 <head>
     <title>all Items</title>
+    <style>
+        table {
+            font-family: "Arial", sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th {
+            border: 2px solid black;
+            text-align: center;
+            padding: 7px;
+        }
+        td {
+            border: 2px solid black;
+            text-align: left;
+            padding: 7px;
+        }
+        th {
+            background-color: #d8fcae;
+        }
+    </style>
 </head>
 <body>
 <p>Items:</p>
 <hr>
-<a href="/onlineshop_war_exploded/servlet/bucket?user_id=${user_id}&item_id=${item.id}&bucket_id=${bucket_id}">GO TO BUCKET</a>
+<a href="${pageContext.request.contextPath}/servlet/bucket?user_id=${user_id}&item_id=${item.id}&bucket_id=${bucket_id}">GO TO BUCKET</a>
 <table border="2" bgcolor="#b3e6ff">
     <tr>
         <th>ID</th>
@@ -27,11 +47,11 @@
                 <c:out value="${item.price}"/>
             </td>
             <td>
-                <a href="/onlineshop_war_exploded/servlet/addToBucket?item_id=${item.id}">ADD ITEM TO BUCKET</a>
+                <a href="${pageContext.request.contextPath}/servlet/addToBucket?item_id=${item.id}">ADD ITEM TO BUCKET</a>
             </td>
         </tr>
     </c:forEach>
 </table>
-<a href="/onlineshop_war_exploded/logout">LOG OUT</a>
+<a href="${pageContext.request.contextPath}/logout">LOG OUT</a>
 </body>
 </html>

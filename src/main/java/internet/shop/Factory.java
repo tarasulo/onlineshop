@@ -5,11 +5,11 @@ import internet.shop.dao.ItemDao;
 import internet.shop.dao.OrderDao;
 import internet.shop.dao.RoleDao;
 import internet.shop.dao.UserDao;
+import internet.shop.dao.hibernate.BucketDaoHibernateImpl;
 import internet.shop.dao.hibernate.ItemDaoHibernateImpl;
+import internet.shop.dao.hibernate.OrderDaoHibernateImpl;
 import internet.shop.dao.hibernate.RoleDaoHibernateImpl;
 import internet.shop.dao.hibernate.UserDaoHibernateImpl;
-import internet.shop.dao.jdbc.BucketDaoJdbcImpl;
-import internet.shop.dao.jdbc.OrderDaoJdbcImpl;
 import internet.shop.service.BucketService;
 import internet.shop.service.ItemService;
 import internet.shop.service.OrderService;
@@ -25,6 +25,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+
 import org.apache.log4j.Logger;
 
 public class Factory {
@@ -74,14 +75,14 @@ public class Factory {
 
     public static BucketDao getBucketDao() {
         if (bucketDao == null) {
-            bucketDao = new BucketDaoJdbcImpl(connection);
+            bucketDao = new BucketDaoHibernateImpl();
         }
         return bucketDao;
     }
 
     public static OrderDao getOrderDao() {
         if (orderDao == null) {
-            orderDao = new OrderDaoJdbcImpl(connection);
+            orderDao = new OrderDaoHibernateImpl();
         }
         return orderDao;
     }
