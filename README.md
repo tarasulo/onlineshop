@@ -33,6 +33,9 @@ welcome!
  
 *7) Change login and password in src.main.java.resources.hibernate.cfg.xml*
 
+*8) Default admin account is "admin", password is "1", 
+default user account is "test", password is "0",*
+
 
 <hr>
 
