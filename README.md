@@ -21,10 +21,20 @@ welcome!
 # <a name="user-start"></a>For user. How to start?
 *1) Clone or download the project from github.com*
 
+*2) Make project as maven project.*
  
+*3) Install and configure Tomcat.*
+ 
+*4) Install and configure database management system.*
+ 
+*5) Run all queries from init_db.sql file in your db.*
+ 
+*6) Change login and password in config.properties file*
+ 
+*7) Change login and password in src.main.java.resources.hibernate.cfg.xml*
 
 
 <hr>
 
 # <a name="author"></a>Author
-* https://github.com/tarasulo
+* [Taras Khalak](https://github.com/tarasulo)
