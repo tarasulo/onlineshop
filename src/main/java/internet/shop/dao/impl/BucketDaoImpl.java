@@ -47,4 +47,7 @@ public class BucketDaoImpl implements BucketDao {
     public Bucket getBucketByUserId(Long id) {
         return null;
     }
+
+    @Override
+    public void deleteItem(Long bucketId, Long itemId) {}
 }

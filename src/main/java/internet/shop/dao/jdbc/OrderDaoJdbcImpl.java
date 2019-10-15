@@ -4,6 +4,7 @@ import internet.shop.dao.OrderDao;
 import internet.shop.lib.Dao;
 import internet.shop.model.Item;
 import internet.shop.model.Order;
+import internet.shop.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.log4j.Logger;
 
 @Dao
@@ -97,6 +99,16 @@ public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
         } catch (SQLException e) {
             logger.error("Can't delete order", e);
         }
+        return null;
+    }
+
+    @Override
+    public List<Order> getOrdersForUser(Long userId) {
+        return null;
+    }
+
+    @Override
+    public Order complite(List<Item> items, User user) {
         return null;
     }
 }

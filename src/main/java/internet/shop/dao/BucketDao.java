@@ -13,4 +13,6 @@ public interface BucketDao {
     Bucket delete(Long id);
 
     Bucket getBucketByUserId(Long id);
+
+    void deleteItem(Long bucketId, Long itemId);
 }

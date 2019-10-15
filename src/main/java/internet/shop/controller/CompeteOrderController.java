@@ -31,8 +31,8 @@ public class CompeteOrderController extends HttpServlet {
         Long userId = (Long) req.getSession(true).getAttribute("userId");
         User user = userService.get(userId);
         List<Item> items = bucketService.getAllItems(user.getBucket().getId());
-        orderService.completeOrder(items, userId);
-        bucketService.clear(bucketService.get(userId).getId());
+        orderService.complete(items, user);
+        bucketService.clear(bucketService.getBucketByUserId(userId).getId());
         resp.sendRedirect(req.getContextPath() + "/servlet/getAllOrders");
     }
 }

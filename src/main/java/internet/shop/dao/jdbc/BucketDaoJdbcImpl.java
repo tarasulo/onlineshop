@@ -100,4 +100,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
         }
         return bucket;
     }
+
+    @Override
+    public void deleteItem(Long bucketId, Long itemId) {}
 }

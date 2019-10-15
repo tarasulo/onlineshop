@@ -117,6 +117,27 @@ public class BucketDaoHibernateImpl implements BucketDao {
         return bucket;
     }
 
+    @Override
+    public void deleteItem(Long bucketId, Long itemId) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            Bucket bucket = get(bucketId);
+            Item removedItem = bucket.getItems()
+                    .stream()
+                    .filter(i -> i.getId().equals(itemId))
+                    .findFirst().get();
+            bucket.getItems().remove(removedItem);
+            update(bucket);
+        } catch (Exception e) {
+            logger.error("Can’t delete item with id " + itemId, e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
     public Bucket addItem(Long bucketId, Long itemId) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Bucket bucket = get(bucketId);

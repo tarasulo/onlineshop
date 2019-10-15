@@ -28,7 +28,6 @@ public class User {
     private Long id;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "bucket_id", referencedColumnName = "bucket_id")
     private Bucket bucket;
     private String name;
     private String surname;
@@ -117,8 +116,7 @@ public class User {
     @Override
     public String toString() {
         return "User{id=" + id
-                + ", name=" + name
-                + ", orders=" + orders + "}";
+                + ", name=" + name + "}";
     }
 
     public String getToken() {

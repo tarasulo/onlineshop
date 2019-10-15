@@ -3,8 +3,11 @@ package internet.shop.dao.impl;
 import internet.shop.dao.OrderDao;
 import internet.shop.dao.Storage;
 import internet.shop.lib.Dao;
+import internet.shop.model.Item;
 import internet.shop.model.Order;
+import internet.shop.model.User;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Dao
@@ -38,5 +41,15 @@ public class OrderDaoImpl implements OrderDao {
         Order order = get(id);
         Storage.orders.removeIf((o) -> o.getId().equals(id));
         return order;
+    }
+
+    @Override
+    public List<Order> getOrdersForUser(Long userId) {
+        return null;
+    }
+
+    @Override
+    public Order complite(List<Item> items, User user) {
+        return null;
     }
 }

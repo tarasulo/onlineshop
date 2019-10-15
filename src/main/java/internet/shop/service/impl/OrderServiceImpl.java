@@ -1,18 +1,15 @@
 package internet.shop.service.impl;
 
 import internet.shop.dao.OrderDao;
-import internet.shop.dao.Storage;
 import internet.shop.dao.UserDao;
 import internet.shop.lib.Inject;
 import internet.shop.lib.Service;
 import internet.shop.model.Item;
 import internet.shop.model.Order;
+import internet.shop.model.User;
 import internet.shop.service.OrderService;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -44,17 +41,21 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order completeOrder(List<Item> items, Long userId) {
-        List<Item> newItems = new ArrayList<>(items);
-        Order order = new Order(userId, newItems);
+        Order order = new Order();
+        User user = userDao.get(userId);
+        order.setUser(user);
+        order.setItems(items);
         orderDao.create(order);
-        userDao.get(userId).getOrders().add(order);
         return order;
     }
 
     @Override
+    public Order complete(List<Item> items, User user) {
+        return orderDao.complite(items, user);
+    }
+
+    @Override
     public List<Order> getAllOrdersForUser(Long userId) {
-        return Storage.orders.stream()
-                .filter(o -> Objects.equals(o.getUserId(), userId))
-                .collect(Collectors.toList());
+        return orderDao.getOrdersForUser(userId);
     }
 }

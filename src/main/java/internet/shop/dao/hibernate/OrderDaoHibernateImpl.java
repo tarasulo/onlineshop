@@ -2,13 +2,17 @@ package internet.shop.dao.hibernate;
 
 import internet.shop.dao.OrderDao;
 import internet.shop.lib.Dao;
+import internet.shop.model.Item;
 import internet.shop.model.Order;
 import internet.shop.model.User;
 import internet.shop.util.HibernateUtil;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 @Dao
 public class OrderDaoHibernateImpl implements OrderDao {
@@ -85,7 +89,19 @@ public class OrderDaoHibernateImpl implements OrderDao {
         return order;
     }
 
-    public List<Order> getAllOrdersOfUser(User user) {
-        return user.getOrders();
+    public List<Order> getOrdersForUser(Long id) {
+        List<Order> orders = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query query = session.createQuery("from Order where user.id=:id");
+            query.setParameter("id", id);
+            orders = query.getResultList();
+        }
+        return orders;
+    }
+
+    @Override
+    public Order complite(List<Item> items, User user) {
+        Order order = new Order(user, items);
+        return create(order);
     }
 }

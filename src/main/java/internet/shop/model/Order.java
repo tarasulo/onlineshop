@@ -27,7 +27,7 @@ public class Order {
     @Transient
     private Long userId;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "orders_items",
@@ -40,11 +40,6 @@ public class Order {
         this.items = items;
     }
 
-    public Order(User user) {
-        this.user = user;
-        items = new ArrayList<>();
-    }
-
     public Order() {
         items = new ArrayList<>();
     }
@@ -52,11 +47,6 @@ public class Order {
     public Order(Long userId) {
         this.userId = userId;
         items = new ArrayList<>();
-    }
-
-    public Order(Long userId, List<Item> newItems) {
-        this.userId = userId;
-        this.items = newItems;
     }
 
     public Long getId() {
@@ -70,12 +60,16 @@ public class Order {
     @Override
     public String toString() {
         return "Order{id=" + id
-                + ", userId=" + user + "\n"
+                + ", userId=" + user
                 + ", items=" + items + "}";
     }
 
     public void setItems(List<Item> list) {
         this.items = items;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public long getUserId() {
