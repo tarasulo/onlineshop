@@ -1,6 +1,7 @@
 package internet.shop.dao.hibernate;
 
 import internet.shop.dao.BucketDao;
+import internet.shop.dao.ItemDao;
 import internet.shop.lib.Dao;
 import internet.shop.lib.Inject;
 import internet.shop.model.Bucket;
@@ -19,7 +20,7 @@ import org.hibernate.query.Query;
 public class BucketDaoHibernateImpl implements BucketDao {
     private static Logger logger = Logger.getLogger(BucketDaoHibernateImpl.class);
     @Inject
-    private static ItemService itemService;
+    private static ItemDao itemDao;
 
     @Override
     public Bucket create(Bucket bucket) {
@@ -142,7 +143,7 @@ public class BucketDaoHibernateImpl implements BucketDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Bucket bucket = get(bucketId);
             List<Item> itemList = bucket.getItems();
-            Item item = itemService.get(itemId);
+            Item item = itemDao.get(itemId);
             itemList.add(item);
             update(bucket);
             return bucket;

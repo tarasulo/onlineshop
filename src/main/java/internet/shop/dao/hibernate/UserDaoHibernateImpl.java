@@ -6,8 +6,10 @@ import internet.shop.lib.Dao;
 import internet.shop.model.User;
 import internet.shop.util.HashUtil;
 import internet.shop.util.HibernateUtil;
+
 import java.util.List;
 import java.util.Optional;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -103,7 +105,6 @@ public class UserDaoHibernateImpl implements UserDao {
             query.setParameter("login", login);
             user = (User) query.uniqueResult();
             if (user.getPassword().equals(HashUtil.hashPassword(psw, user.getSalt()))) {
-                // user.setRoles(getRoles(user.getId()));
                 return user;
             }
         }

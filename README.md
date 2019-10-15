@@ -1,4 +1,4 @@
-# online-shop
+# Online-shop
 ![Language grade: Java](images/onlinestore.jpg)
 
 welcome!

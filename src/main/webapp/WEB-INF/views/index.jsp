@@ -10,6 +10,6 @@
     <a href="${pageContext.request.contextPath}/servlet/getAllUsers">Users</a>
     <a href="${pageContext.request.contextPath}/servlet/getAllItems">Items</a>
     <a href="${pageContext.request.contextPath}/logout">Logout</a>
-    <a href="${pageContext.request.contextPath}/inject">Start</a>
+    <h2><img src="https://github.com/tarasulo/onlineshop/images/onlinestore.jpg" alt="Online-store"></h2>
 </body>
 </html>
