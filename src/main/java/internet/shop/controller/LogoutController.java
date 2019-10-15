@@ -19,15 +19,12 @@ public class LogoutController extends HttpServlet {
             throws IOException {
         for (Cookie cookie : req.getCookies()) {
             if (cookie.getName().equals("Mate")) {
-                cookie.setValue(null);
+                cookie.setValue("");
                 cookie.setMaxAge(0);
                 resp.addCookie(cookie);
             }
         }
-        Long userId = (Long) req.getSession(false).getAttribute("userId");
         req.getSession().invalidate();
-        Bucket bucket = bucketService.get(userId);
-        bucketService.delete(bucket.getId());
-        resp.sendRedirect(req.getContextPath() + "/login");
+        resp.sendRedirect(req.getContextPath() + "/index");
     }
 }

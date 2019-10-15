@@ -27,8 +27,8 @@ public class User {
     @Column(name = "user_id", columnDefinition = "INT")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bucket_id", referencedColumnName = "bucket_id")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "bucket_id", referencedColumnName = "bucket_id")
     private Bucket bucket;
     private String name;
     private String surname;

@@ -29,7 +29,8 @@ public class Bucket {
             inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName = "item_id"))
     private List<Item> items;
 
-    @OneToOne(mappedBy = "bucket")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
     public Bucket() {}
