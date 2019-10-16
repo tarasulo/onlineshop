@@ -23,10 +23,10 @@ public class Bucket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bucket_id", columnDefinition = "INT")
     private Long id;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "buckets_items",
-            joinColumns = @JoinColumn(name = "bucket_id", referencedColumnName = "bucket_id"),
-            inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName = "item_id"))
+            joinColumns = @JoinColumn(name = "bucket_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> items;
 
     @OneToOne(cascade = CascadeType.ALL)
