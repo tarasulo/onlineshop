@@ -25,5 +25,5 @@ public interface UserService {
 
     Optional<User> getByToken(String token);
 
-    String getSaltByLogin(String login);
+    byte[] getSaltByLogin(String login);
 }

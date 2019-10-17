@@ -1,9 +1,21 @@
 package internet.shop.model;
 
-public class Item {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "items")
+public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "item_id", columnDefinition = "INT")
     private Long id;
     private String name;
+    @Column(name = "price", columnDefinition = "DECIMAL")
     private Double price;
 
     public Item(Long id) {
@@ -13,6 +25,9 @@ public class Item {
     public Item(String name, Double price) {
         this.name = name;
         this.price = price;
+    }
+
+    public Item() {
     }
 
     public Long getId() {
@@ -41,7 +56,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return "{name=" + name + "\n"
-                + ", price=" + price + "}";
+        return "{name=" + name + ", price=" + price + "}";
     }
 }

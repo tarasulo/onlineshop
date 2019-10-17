@@ -21,6 +21,30 @@
         <url-pattern>/servlet/getAllUsers</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>editItems</servlet-name>
+        <servlet-class>internet.shop.controller.EditItemsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editItems</servlet-name>
+        <url-pattern>/servlet/editItems</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteItem</servlet-name>
+        <servlet-class>internet.shop.controller.DeleteItemController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteItem</servlet-name>
+        <url-pattern>/servlet/deleteItem</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>createItem</servlet-name>
+        <servlet-class>internet.shop.controller.CreateItemController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createItem</servlet-name>
+        <url-pattern>/servlet/createItem</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>registration</servlet-name>
         <servlet-class>internet.shop.controller.RegistrationController</servlet-class>
     </servlet>

@@ -4,6 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/onlineshop_war_exploded/servlet/getAllItems">SHOW GOODS</a>
+<a href="${pageContext.request.contextPath}/servlet/getAllItems">SHOW GOODS</a>
 </body>
 </html>

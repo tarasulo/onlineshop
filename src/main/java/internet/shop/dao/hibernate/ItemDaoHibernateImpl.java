@@ -37,7 +37,10 @@ public class ItemDaoHibernateImpl implements ItemDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Item item = session.get(Item.class, id);
             return item;
+        } catch (Exception e) {
+            logger.error("Can't get item by id=" + id, e);
         }
+        return null;
     }
 
     @Override
@@ -91,6 +94,9 @@ public class ItemDaoHibernateImpl implements ItemDao {
     public List getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createCriteria(Item.class).list();
+        } catch (Exception e) {
+            logger.error("Can't get all items", e);
         }
+        return null;
     }
 }

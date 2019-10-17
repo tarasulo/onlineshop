@@ -12,5 +12,9 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">validate</property>
         <mapping class="internet.shop.model.Item" />
+        <mapping class="internet.shop.model.Role" />
+        <mapping class="internet.shop.model.User" />
+        <mapping class="internet.shop.model.Bucket" />
+        <mapping class="internet.shop.model.Order" />
     </session-factory>
 </hibernate-configuration>

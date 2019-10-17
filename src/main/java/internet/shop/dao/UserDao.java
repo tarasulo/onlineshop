@@ -22,5 +22,5 @@ public interface UserDao {
 
     Optional<User> getByToken(String token);
 
-    String getSaltByLogin(String login);
+    byte[] getSaltByLogin(String login);
 }

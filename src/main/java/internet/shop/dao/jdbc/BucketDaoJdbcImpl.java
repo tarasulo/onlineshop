@@ -10,13 +10,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.apache.log4j.Logger;
 
 @Dao
 public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao {
 
+    private static String queryCreateBucket = "INSERT INTO buckets (user_id) VALUES (?);";
+    private static String queryGetBucket = "SELECT * FROM buckets WHERE bucket_id = ?;";
+    private static String queryUpdateBucket = "UPDATE buckets SET user_id = ? WHERE bucket_id = ?;";
+    private static String queryRemoveBucket = "DELETE FROM buckets WHERE bucket_id = ?;";
+    private static String queryGetBucketByUserId = "SELECT * FROM buckets WHERE user_id = ?;";
+
     @Inject
     private static UserDao userDao;
+
     private static Bucket bucket = null;
     private static Logger logger = Logger.getLogger(BucketDaoJdbcImpl.class);
 
@@ -26,9 +34,8 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
 
     @Override
     public Bucket create(Bucket bucket) {
-        String bucketQuery = "INSERT INTO buckets (user_id) VALUES (?);";
         try (PreparedStatement statementBuckets = connection.prepareStatement(
-                bucketQuery, PreparedStatement.RETURN_GENERATED_KEYS)) {
+                queryCreateBucket, PreparedStatement.RETURN_GENERATED_KEYS)) {
             statementBuckets.setLong(1, bucket.getUserId());
             statementBuckets.executeUpdate();
             ResultSet generatedKeys = statementBuckets.getGeneratedKeys();
@@ -43,8 +50,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
 
     @Override
     public Bucket get(Long bucketId) {
-        String queryBuckets = "SELECT * FROM buckets WHERE bucket_id = ?;";
-        try (PreparedStatement statementBuckets = connection.prepareStatement(queryBuckets)) {
+        try (PreparedStatement statementBuckets = connection.prepareStatement(queryGetBucket)) {
             statementBuckets.setLong(1, bucketId);
             ResultSet resultSet = statementBuckets.executeQuery();
             while (resultSet.next()) {
@@ -60,9 +66,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
 
     @Override
     public Bucket update(Bucket bucket) {
-        String queryBucktes =
-                "UPDATE buckets SET user_id = ? WHERE bucket_id = ?;";
-        try (PreparedStatement statementBuckets = connection.prepareStatement(queryBucktes)) {
+        try (PreparedStatement statementBuckets = connection.prepareStatement(queryUpdateBucket)) {
             statementBuckets.setLong(1, bucket.getUserId());
             statementBuckets.setLong(2, bucket.getId());
             statementBuckets.executeUpdate();
@@ -74,8 +78,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
 
     @Override
     public Bucket delete(Long id) {
-        String queryBucktes = "DELETE FROM buckets WHERE bucket_id = ?;";
-        try (PreparedStatement statementBuckets = connection.prepareStatement(queryBucktes)) {
+        try (PreparedStatement statementBuckets = connection.prepareStatement(queryRemoveBucket)) {
             statementBuckets.setLong(1, id);
             statementBuckets.executeUpdate();
         } catch (SQLException e) {
@@ -86,8 +89,8 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
 
     @Override
     public Bucket getBucketByUserId(Long userId) {
-        String queryBucktes = "SELECT * FROM buckets WHERE user_id = ?;";
-        try (PreparedStatement statementBuckets = connection.prepareStatement(queryBucktes)) {
+        try (PreparedStatement statementBuckets = connection
+                .prepareStatement(queryGetBucketByUserId)) {
             statementBuckets.setLong(1, userId);
             ResultSet resultSet = statementBuckets.executeQuery();
             while (resultSet.next()) {
@@ -99,5 +102,9 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
             logger.error("Can't get bucket", e);
         }
         return bucket;
+    }
+
+    @Override
+    public void deleteItem(Long bucketId, Long itemId) {
     }
 }
