@@ -15,23 +15,23 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 public class AnnotatedClassMap {
-    private static final Logger logger = Logger.getLogger(AnnotatedClassMap.class);
-    private static final Map<Class, Object> classMap = new HashMap<>();
+    private static final Logger LOGGER = Logger.getLogger(AnnotatedClassMap.class);
+    private static final Map<Class, Object> CLASS_MAP = new HashMap<>();
 
     static {
-        classMap.put(BucketDao.class, Factory.getBucketDao());
-        classMap.put(ItemDao.class, Factory.getItemDao());
-        classMap.put(OrderDao.class, Factory.getOrderDao());
-        classMap.put(UserDao.class, Factory.getUserDao());
-        classMap.put(RoleDao.class, Factory.getRoleDao());
-        classMap.put(BucketService.class, Factory.getBucketService());
-        classMap.put(ItemService.class, Factory.getItemService());
-        classMap.put(OrderService.class, Factory.getOrderService());
-        classMap.put(UserService.class, Factory.getUserService());
-        logger.info("Data successfully added");
+        CLASS_MAP.put(BucketDao.class, Factory.getBucketDao());
+        CLASS_MAP.put(ItemDao.class, Factory.getItemDao());
+        CLASS_MAP.put(OrderDao.class, Factory.getOrderDao());
+        CLASS_MAP.put(UserDao.class, Factory.getUserDao());
+        CLASS_MAP.put(RoleDao.class, Factory.getRoleDao());
+        CLASS_MAP.put(BucketService.class, Factory.getBucketService());
+        CLASS_MAP.put(ItemService.class, Factory.getItemService());
+        CLASS_MAP.put(OrderService.class, Factory.getOrderService());
+        CLASS_MAP.put(UserService.class, Factory.getUserService());
+        LOGGER.info("Data successfully added");
     }
 
     public static Object getImplementation(Class interfaceClass) {
-        return classMap.get(interfaceClass);
+        return CLASS_MAP.get(interfaceClass);
     }
 }

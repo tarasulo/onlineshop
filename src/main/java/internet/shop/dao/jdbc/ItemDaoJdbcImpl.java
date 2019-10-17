@@ -16,6 +16,12 @@ import org.apache.log4j.Logger;
 
 @Dao
 public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
+    private static String queryCreateItem = "Insert into %s.items (name, price) Values ('%s', %f);";
+    private static String queryGetItem = "Select * from %s.items where item_id = %d;";
+    private static String queryUpdateItem = "UPDATE %s.items SET name  "
+            + "= '%s', price= %.2f WHERE item_id = %d;";
+    private static String queryRemoveItem = "DELETE FROM %s.items WHERE item_id = %d;";
+    private static String queryGetAll = "SELECT * FROM %s.items;";
     private static final Logger logger = Logger.getLogger(ItemDaoJdbcImpl.class);
     private static final String DB_NAME = "store";
     private Statement statement = null;
@@ -26,7 +32,7 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
 
     @Override
     public Item create(Item item) {
-        String query = String.format("Insert into %s.items (name, price) Values ('%s', %f);",
+        String query = String.format(queryCreateItem,
                 DB_NAME, item.getName(), item.getPrice());
         try {
             statement = connection.createStatement();
@@ -48,7 +54,7 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
 
     @Override
     public Item get(Long id) {
-        String query = String.format("Select * from %s.items where item_id = %d;", DB_NAME, id);
+        String query = String.format(queryGetItem, DB_NAME, id);
 
         try {
             statement = connection.createStatement();
@@ -78,7 +84,7 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
     @Override
     public Item update(Item item) {
         String query = String
-                .format("UPDATE %s.items SET name  = '%s', price= %.2f WHERE item_id = %d;",
+                .format(queryUpdateItem,
                         DB_NAME, item.getId(), item.getName(), item.getPrice(), item.getId());
         try {
             statement = connection.createStatement();
@@ -99,7 +105,7 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
 
     @Override
     public void delete(Long id) {
-        String query = String.format("DELETE FROM %s.items WHERE item_id = %d;", DB_NAME, id);
+        String query = String.format(queryRemoveItem, DB_NAME, id);
         try {
             statement = connection.createStatement();
             statement.executeUpdate(query);
@@ -124,7 +130,7 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
     @Override
     public List<Item> getAll() {
         List<Item> items = new ArrayList<>();
-        String query = String.format("SELECT * FROM %s.items;", DB_NAME);
+        String query = String.format(queryGetAll, DB_NAME);
         try {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);

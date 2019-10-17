@@ -8,10 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.apache.log4j.Logger;
 
 @Dao
 public class RoleDaoJdbcImpl extends AbstractDao<Role> implements RoleDao {
+    private static String queryGetRole = "SELECT * FROM store.role WHERE role_name =?";
+
     private static Logger logger = Logger.getLogger(RoleDaoJdbcImpl.class);
 
     public RoleDaoJdbcImpl(Connection connection) {
@@ -20,9 +23,8 @@ public class RoleDaoJdbcImpl extends AbstractDao<Role> implements RoleDao {
 
     @Override
     public Role get(Role.RoleName roleName) {
-        String getRoleQuery = "SELECT * FROM store.role WHERE role_name =?";
         try (PreparedStatement statement =
-                     connection.prepareStatement(getRoleQuery)) {
+                     connection.prepareStatement(queryGetRole)) {
             statement.setString(1, String.valueOf(roleName));
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {

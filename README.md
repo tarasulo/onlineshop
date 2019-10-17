@@ -16,6 +16,7 @@ welcome!
 * maven-checkstyle-plugin
 * GoogleCheckstyle
 * Tomcat 8.5.46 server
+* Bulma css framework
 <hr>
 
 # <a name="user-start"></a>For user. How to start?
@@ -27,7 +28,7 @@ welcome!
  
 *4) Install and configure database management system.*
  
-*5) Run all queries from init_db.sql file in your db.*
+*5) You can import database from store.sql file resources package.*
  
 *6) Change login and password in config.properties file*
  
@@ -35,6 +36,8 @@ welcome!
 
 *8) Default admin account is "admin", password is "1", 
 default user account is "test", password is "0",*
+
+*9) add Bulma css framework (npm install bulma)*
 
 
 <hr>

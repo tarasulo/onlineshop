@@ -6,7 +6,6 @@ import internet.shop.lib.Dao;
 import internet.shop.lib.Inject;
 import internet.shop.model.Bucket;
 import internet.shop.model.Item;
-import internet.shop.service.ItemService;
 import internet.shop.util.HibernateUtil;
 
 import java.util.List;
@@ -110,10 +109,8 @@ public class BucketDaoHibernateImpl implements BucketDao {
             Query query = session.createQuery("FROM Bucket WHERE user.id=:id");
             query.setParameter("id", id);
             bucket = (Bucket) query.uniqueResult();
-        }
-        if (bucket == null) {
-            logger.error("Can't get bucket by id!");
-            throw new RuntimeException("Can't get bucket by id!");
+        } catch (Exception e) {
+            logger.error("Can't get bucket by id!" + id, e);
         }
         return bucket;
     }
@@ -147,7 +144,10 @@ public class BucketDaoHibernateImpl implements BucketDao {
             itemList.add(item);
             update(bucket);
             return bucket;
+        } catch (Exception e) {
+            logger.error("Can't add item to bucket", e);
         }
+        return null;
     }
 
     public List<Item> getAllItems(Long bucketId) {

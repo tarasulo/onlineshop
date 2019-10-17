@@ -10,12 +10,15 @@ import internet.shop.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 @Dao
 public class OrderDaoHibernateImpl implements OrderDao {
+    private static Logger logger = Logger.getLogger(OrderDaoHibernateImpl.class);
+
     @Override
     public Order create(Order order) {
         Long orderId = null;
@@ -27,6 +30,7 @@ public class OrderDaoHibernateImpl implements OrderDao {
             orderId = (Long) session.save(order);
             transaction.commit();
         } catch (Exception e) {
+            logger.error("Can't create order", e);
             if (transaction != null) {
                 transaction.rollback();
             }
@@ -43,7 +47,10 @@ public class OrderDaoHibernateImpl implements OrderDao {
     public Order get(Long id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.get(Order.class, id);
+        } catch (Exception e) {
+            logger.error("Can't get order by id=" + id, e);
         }
+        return null;
     }
 
     @Override
@@ -56,6 +63,7 @@ public class OrderDaoHibernateImpl implements OrderDao {
             session.update(order);
             transaction.commit();
         } catch (Exception e) {
+            logger.error("Can't update order", e);
             if (transaction != null) {
                 transaction.rollback();
             }
@@ -78,6 +86,7 @@ public class OrderDaoHibernateImpl implements OrderDao {
             session.delete(order);
             transaction.commit();
         } catch (Exception e) {
+            logger.error("Can't delete order", e);
             if (transaction != null) {
                 transaction.rollback();
             }
@@ -95,6 +104,8 @@ public class OrderDaoHibernateImpl implements OrderDao {
             Query query = session.createQuery("from Order where user.id=:id");
             query.setParameter("id", id);
             orders = query.getResultList();
+        } catch (Exception e) {
+            logger.error("Can't get orders by user id=" + id);
         }
         return orders;
     }

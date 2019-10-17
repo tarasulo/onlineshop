@@ -26,6 +26,22 @@ import org.apache.log4j.Logger;
 
 @Dao
 public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
+    private static String queryAddUser = "INSERT INTO store.users "
+            + "(name, login, password, token, salt) VALUES (?, ?, ?, ?, ?);";
+    private static String queryAddRole = "INSERT INTO store.user_role (user_id, role_id) "
+            + "VALUES (?, ?);";
+    private static String queryGetUser = "SELECT * FROM store.users WHERE user_id = ?;";
+    private static String queryUpdateUser = "UPDATE users "
+            + "SET name = ?, surname = ?, login = ?, password = ? "
+            + "WHERE (user_id = ?);";
+    private static String queryRemoveUser = "DELETE FROM store.users WHERE user_id = ?;";
+    private static String queryGetAllUsers = "SELECT * FROM users";
+    private static String queryLogin = "SELECT * FROM store.users "
+            + "WHERE login = ? and password = ?;";
+    private static String queryGetByToken = "SELECT * FROM store.users WHERE token = ?;";
+    private static String queryGetBySalt = "SELECT salt FROM store.users WHERE login = ?;";
+    private static String queryGetRoles = "SELECT r.role_id, r.role_name FROM store.role r "
+            + "INNER JOIN store.user_role ur ON r.role_id = ur.role_id WHERE user_id=?;";
 
     private static Logger logger = Logger.getLogger(UserDaoJdbcImpl.class);
     private static User user = null;
@@ -40,10 +56,8 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public User add(User user) {
-        String query = "INSERT INTO store.users (name, login, password, token, salt) "
-                + "VALUES (?, ?, ?, ?, ?);";
         try (PreparedStatement statementUsers = connection.prepareStatement(
-                query, PreparedStatement.RETURN_GENERATED_KEYS)) {
+                queryAddUser, PreparedStatement.RETURN_GENERATED_KEYS)) {
             statementUsers.setString(1, user.getName());
             statementUsers.setString(2, user.getLogin());
             statementUsers.setString(3, user.getPassword());
@@ -64,8 +78,7 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
     }
 
     private Role addRole(Long userId, Role role) {
-        String query = "INSERT INTO store.user_role (user_id, role_id) VALUES (?, ?);";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(queryAddRole)) {
             preparedStatement.setLong(1, userId);
             preparedStatement.setLong(2, role.getId());
             preparedStatement.executeUpdate();
@@ -77,8 +90,7 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public User get(Long id) {
-        String query = "SELECT * FROM store.users WHERE user_id = ?;";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(queryGetUser)) {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -92,11 +104,7 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public User update(User user) {
-        String query = "UPDATE users "
-                + "SET name = ?, surname = ?, login = ?, password = ? "
-                + "WHERE (user_id = ?);";
-
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(queryUpdateUser)) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getSurname());
             statement.setString(3, user.getLogin());
@@ -112,8 +120,7 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public void delete(Long id) {
-        String query = "DELETE FROM store.users WHERE user_id = ?;";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(queryRemoveUser)) {
             statement.setLong(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -124,8 +131,7 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
     @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
-        String query = "SELECT * FROM users";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(queryGetAllUsers)) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 resultSetUser(resultSet);
@@ -139,10 +145,8 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public User login(String login, String psw) throws AuthenticationException {
-        String query = "SELECT * FROM store.users WHERE login = ? and password = ?;";
-
-        String hashPasword = HashUtil.hashPassword(psw, getSaltByLogin(login));
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        String hashPasword = HashUtil.hashPassword(psw, getSaltByLogin(queryLogin));
+        try (PreparedStatement statement = connection.prepareStatement(queryLogin)) {
             statement.setString(1, login);
             statement.setString(2, hashPasword);
             ResultSet resultSet = statement.executeQuery();
@@ -161,9 +165,8 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public Optional<User> getByToken(String token) {
-        String query = "SELECT * FROM store.users WHERE token = ?;";
         Optional<User> optionalUser = Optional.empty();
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(queryGetByToken)) {
             statement.setString(1, token);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -180,9 +183,8 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public byte[] getSaltByLogin(String login) {
-        String query = "SELECT salt FROM store.users WHERE login = ?;";
         byte[] result = new byte[0];
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(queryGetBySalt)) {
             statement.setString(1, login);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -207,10 +209,8 @@ public class UserDaoJdbcImpl extends AbstractDao<User> implements UserDao {
     }
 
     public Set<Role> getRoles(Long userId) {
-        String query = "SELECT r.role_id, r.role_name FROM store.role r "
-                + "INNER JOIN store.user_role ur ON r.role_id = ur.role_id WHERE user_id=?;";
         Set<Role> hashSet = new HashSet<>();
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(queryGetRoles)) {
             statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {

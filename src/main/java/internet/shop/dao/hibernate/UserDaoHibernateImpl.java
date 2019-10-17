@@ -48,7 +48,10 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             User user = session.get(User.class, id);
             return user;
+        } catch (Exception e) {
+            logger.error("Can't get user by id=" + id, e);
         }
+        return null;
     }
 
     @Override
@@ -93,7 +96,10 @@ public class UserDaoHibernateImpl implements UserDao {
     public List<User> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("FROM User").list();
+        } catch (Exception e) {
+            logger.error("Can't get all users", e);
         }
+        return null;
     }
 
     @Override
@@ -104,11 +110,14 @@ public class UserDaoHibernateImpl implements UserDao {
             Query query = session.createQuery("FROM User WHERE login=:login");
             query.setParameter("login", login);
             user = (User) query.uniqueResult();
+            if (user == null) {
+                throw new AuthenticationException("incorrect username or password");
+            }
             if (user.getPassword().equals(HashUtil.hashPassword(psw, user.getSalt()))) {
                 return user;
             }
-        }
-        if (user == null) {
+        } catch (Exception e) {
+            logger.error("incorrect username or password", e);
             throw new AuthenticationException("incorrect username or password");
         }
         return user;
@@ -117,11 +126,14 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public Optional<User> getByToken(String token) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query query = session.createQuery("FROM User WHERE token=:token");
+            Query query = session.createQuery("from User where token=:token");
             query.setParameter("token", token);
-            List<User> list = query.list();
-            return list.stream().findFirst();
+            User user = (User) query.getSingleResult();
+            return Optional.ofNullable(user);
+        } catch (Exception e) {
+            logger.error("Can't get user by token", e);
         }
+        return Optional.empty();
     }
 
     @Override
