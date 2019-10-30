@@ -6,6 +6,8 @@ welcome!
 * [Project structure](#structure)
 * [How to start the project?](#user-start)
 * [Author](#author)
+* [Snapshots](#snapshots)
+
 
 # <a name="structure"></a>Project Structure
 * Java 11
@@ -41,6 +43,18 @@ default user account is "test", password is "0",*
 
 
 <hr>
+
+#<a name="snapshots"></a> Snapshots :
+
+Admin role:
+![Language grade: Java](images/01.jpg)
+![Language grade: Java](images/02.jpg)
+![Language grade: Java](images/03.jpg)
+
+User role:
+![Language grade: Java](images/04.jpg)
+![Language grade: Java](images/05.jpg)
+![Language grade: Java](images/06.jpg)
 
 # <a name="author"></a>Author
 * [Taras Khalak](https://github.com/tarasulo)
